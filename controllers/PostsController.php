@@ -152,7 +152,7 @@ class PostsController extends Controller
      */
     public function actionPosts()
     {
-        $count = 10000;
+        $count = 10;
         $posts = '';
 
         for ($i = 0; $i < $count; $i++) {
@@ -175,7 +175,7 @@ class PostsController extends Controller
         }
 
         return $this->render('posts', [
-               'post' => $posts
+            'post' => $posts
         ]);
     }
 
@@ -191,9 +191,9 @@ class PostsController extends Controller
         $textWords = rand(5, 8); //Слов в тексте
         $sentence = rand(3, 4); //Количество предложений
 
-        $obj['title'] = $this->generateRandomText($lang->title,'title',$titleWords);
+        $obj['title'] = $this->generateRandomText($lang->title, 'title', $titleWords);
 
-        $obj['text'] = $this->generateRandomText($lang->title,'title',$titleWords,$sentence);
+        $obj['text'] = $this->generateRandomText($lang->title, 'text', $textWords, $sentence);
 
 
         $author = Authors::find()->select(['id', 'name'])->orderBy(['RAND()' => SORT_ASC])->one();
@@ -259,9 +259,10 @@ class PostsController extends Controller
 
                         $i++;
                     }
-                    $obj['text'] = $str;
-                    return $obj['text'];
+
                 }
+                $obj['text'] = $str;
+                return $obj['text'];
             }
         } else {
             if ($type == 'title') {
@@ -306,9 +307,9 @@ class PostsController extends Controller
 
                         $i++;
                     }
-                    $obj['text'] = $str;
-                    return $obj['text'];
                 }
+                $obj['text'] = $str;
+                return $obj['text'];
             }
         }
         return false;
