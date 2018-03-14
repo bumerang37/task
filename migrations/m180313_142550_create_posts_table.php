@@ -20,8 +20,6 @@ class m180313_142550_create_posts_table extends Migration
             'text' => $this->text(),
             'count' => $this->integer(), //Количество лайков
             'created_at' => $this->dateTime(),
-
-
         ]);
 
         $this->addForeignKey('fk-posts-language_id','posts','language_id','languages','id','CASCADE');

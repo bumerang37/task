@@ -40,7 +40,7 @@ class PostsSearch extends Posts
      */
     public function search($params)
     {
-        $query = Posts::find();
+        $query = Posts::find()->joinWith(['author'])->joinWith(['language']);
 
         // add conditions that should always apply here
 

@@ -41,7 +41,7 @@ class LanguagesSearch extends Languages
      */
     public function search($params)
     {
-        $query = Languages::find();
+        $query = Languages::find()->joinWith(['posts']);
 
         // add conditions that should always apply here
 

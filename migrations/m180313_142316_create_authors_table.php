@@ -16,7 +16,6 @@ class m180313_142316_create_authors_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(),
         ]);
-
     }
 
     /**

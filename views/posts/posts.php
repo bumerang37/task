@@ -1,2 +1,2 @@
 <?php
-echo "Post id = $post Successfully saved"."\n";
+echo "Post id = <br /> $post <br />Successfully saved"."\n";
