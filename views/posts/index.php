@@ -23,14 +23,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            /*['class' => 'yii\grid\SerialColumn'],*/
+            ['class' => 'yii\grid\SerialColumn'],
+
             'id',
-            'language_id',
-            'author_id',
+            [
+                'attribute' => 'language_id',
+                'value' => function ($model, $key) {
+                    return $model->language->title;
+                }
+            ]
+            ,
+            [
+                'attribute' => 'author_id',
+                'value' => function ($model, $key) {
+                    return $model->author->name;
+                }
+            ],
             'title',
             'text:ntext',
-            //'count',
-            //'date_create',
+            'count',
+            'created_at:datetime',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

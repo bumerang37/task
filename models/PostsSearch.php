@@ -5,10 +5,9 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Posts;
 
 /**
- * PostsSearch represents the model behind the search form of `\app\models\Posts`.
+ * PostsSearch represents the model behind the search form of `app\models\Posts`.
  */
 class PostsSearch extends Posts
 {
@@ -19,7 +18,7 @@ class PostsSearch extends Posts
     {
         return [
             [['id', 'language_id', 'author_id', 'count'], 'integer'],
-            [['title', 'text', 'date_create'], 'safe'],
+            [['title', 'text', 'created_at'], 'safe'],
         ];
     }
 
@@ -63,7 +62,7 @@ class PostsSearch extends Posts
             'language_id' => $this->language_id,
             'author_id' => $this->author_id,
             'count' => $this->count,
-            'date_create' => $this->date_create,
+            'created_at' => $this->created_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

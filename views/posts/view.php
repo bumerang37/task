@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'text:ntext',
             'count',
-            'date_create',
+            'created_at',
         ],
     ]) ?>
 

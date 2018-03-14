@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ *
+ * @property Posts[] $posts
  */
 class Authors extends \yii\db\ActiveRecord
 {
@@ -17,7 +19,7 @@ class Authors extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'authors';
+        return '{{%authors}}';
     }
 
     /**
@@ -39,5 +41,13 @@ class Authors extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Posts::className(), ['author_id' => 'id']);
     }
 }

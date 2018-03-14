@@ -13,7 +13,10 @@ use Yii;
  * @property string $title
  * @property string $text
  * @property int $count
- * @property string $date_create
+ * @property string $created_at
+ *
+ * @property Authors $author
+ * @property Languages $language
  */
 class Posts extends \yii\db\ActiveRecord
 {
@@ -22,7 +25,7 @@ class Posts extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'posts';
+        return '{{%posts}}';
     }
 
     /**
@@ -33,8 +36,10 @@ class Posts extends \yii\db\ActiveRecord
         return [
             [['language_id', 'author_id', 'count'], 'integer'],
             [['text'], 'string'],
-            [['date_create'], 'safe'],
+            [['created_at'], 'default', 'value'=> date('Y-m-d H:i:s')],
             [['title'], 'string', 'max' => 255],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Authors::className(), 'targetAttribute' => ['author_id' => 'id']],
+            [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::className(), 'targetAttribute' => ['language_id' => 'id']],
         ];
     }
 
@@ -45,12 +50,28 @@ class Posts extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'language_id' => 'Language ID',
-            'author_id' => 'Author ID',
+            'language_id' => 'Language ',
+            'author_id' => 'Author ',
             'title' => 'Title',
             'text' => 'Text',
             'count' => 'Count',
-            'date_create' => 'Date Create',
+            'created_at' => 'Created At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAuthor()
+    {
+        return $this->hasOne(Authors::className(), ['id' => 'author_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLanguage()
+    {
+        return $this->hasOne(Languages::className(), ['id' => 'language_id']);
     }
 }

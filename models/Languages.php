@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property string $title
+ *
+ * @property Posts[] $posts
  */
 class Languages extends \yii\db\ActiveRecord
 {
@@ -39,5 +41,13 @@ class Languages extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Posts::className(), ['language_id' => 'id']);
     }
 }

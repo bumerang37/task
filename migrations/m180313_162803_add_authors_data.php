@@ -32,7 +32,7 @@ class m180313_162803_add_authors_data extends Migration
      */
     public function safeDown()
     {
-        Yii::$app->db->createCommand()->delete('{%%authors}', ['in', 'name', [
+        Yii::$app->db->createCommand()->delete('{{%authors}}', ['in', 'name', [
                 'CrazyNews',
                 'Чук и Гек',
                 'CatFuns',

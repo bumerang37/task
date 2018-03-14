@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Authors;
 
 /**
- * AuthorsSearch represents the model behind the search form of `\app\models\Authors`.
+ * AuthorsSearch represents the model behind the search form of `app\models\Authors`.
  */
 class AuthorsSearch extends Authors
 {

@@ -39,6 +39,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Генератор', 'url' => ['/posts/posts']],
             ['label' => 'Посты', 'url' => ['/posts/index']],
             ['label' => 'Авторы', 'url' => ['/authors/index']],
             ['label' => 'Языки', 'url' => ['/languages/index']],
