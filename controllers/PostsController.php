@@ -152,7 +152,7 @@ class PostsController extends Controller
      */
     public function actionPosts()
     {
-        $count = 10;
+        $count = 10000;
         $posts = '';
 
         for ($i = 0; $i < $count; $i++) {

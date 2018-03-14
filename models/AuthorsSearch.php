@@ -41,7 +41,7 @@ class AuthorsSearch extends Authors
      */
     public function search($params)
     {
-        $query = Authors::find()->joinWith(['posts']);
+        $query = Authors::find();
 
         // add conditions that should always apply here
 
